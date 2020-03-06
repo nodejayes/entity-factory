@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="TestEntityFactory" type="GoTestRunConfiguration" factoryName="Go Test">
+    <module name="entity-factory" />
+    <working_directory value="$PROJECT_DIR$/tests" />
+    <framework value="gotest" />
+    <kind value="PACKAGE" />
+    <package value="github.com/nodejayes/entity-factory/tests" />
+    <pattern value="^TestEntityFactory$" />
+    <method v="2" />
+  </configuration>
+</component>
