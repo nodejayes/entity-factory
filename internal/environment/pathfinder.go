@@ -1,4 +1,4 @@
-package parsing
+package environment
 
 import (
 	"errors"
@@ -6,6 +6,7 @@ import (
 	"path"
 )
 
+// handles the Application Paths for Directory and Files
 type Pathfinder struct{}
 
 // returns the Path to a File in the Current Working Directory only when exists

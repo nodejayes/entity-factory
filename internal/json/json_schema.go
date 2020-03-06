@@ -1,4 +1,4 @@
-package parsing
+package json
 
 // available Draft URIs in JSON Schema
 type DraftVersions = string

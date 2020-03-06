@@ -1,10 +1,10 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="ParsingConfig Test" type="GoTestRunConfiguration" factoryName="Go Test">
     <module name="entity-factory" />
-    <working_directory value="$PROJECT_DIR$/tests/parsing" />
+    <working_directory value="$PROJECT_DIR$/tests/json" />
     <framework value="gotest" />
     <kind value="PACKAGE" />
-    <package value="github.com/nodejayes/entity-factory/tests/parsing" />
+    <package value="github.com/nodejayes/entity-factory/tests/json" />
     <pattern value="^TestParsingConfig$" />
     <method v="2" />
   </configuration>

@@ -1,7 +1,7 @@
-package parsing
+package json
 
 import (
-	"github.com/nodejayes/entity-factory/internal/parsing"
+	"github.com/nodejayes/entity-factory/internal/environment"
 	"github.com/onsi/ginkgo"
 	"github.com/onsi/gomega"
 	"io/ioutil"
@@ -28,7 +28,7 @@ var _ = ginkgo.Describe("Pathfinder Tests", func() {
 	ginkgo.Context("[Method]: GetFileInCurrentWorkingDirectory", func() {
 		ginkgo.It("get the Path to a File that exists", func() {
 			createDemoFile()
-			finder := parsing.Pathfinder{}
+			finder := environment.Pathfinder{}
 			filePath, err := finder.GetFileInCurrentWorkingDirectory("demo.txt")
 			gomega.Expect(err).To(gomega.BeNil())
 			cwd, _ := os.Getwd()
@@ -36,10 +36,10 @@ var _ = ginkgo.Describe("Pathfinder Tests", func() {
 			deleteDemoFile()
 		})
 		ginkgo.It("error when file not exists", func() {
-			finder := parsing.Pathfinder{}
+			finder := environment.Pathfinder{}
 			path, err := finder.GetFileInCurrentWorkingDirectory("demo.txt")
 			gomega.Expect(err).To(gomega.Not(gomega.BeNil()))
-			gomega.Expect(err.Error()).To(gomega.Equal("file does not exists"))
+			gomega.Expect(err.Error()).To(gomega.ContainSubstring("file does not exists"))
 			gomega.Expect(path).To(gomega.Equal(""))
 		})
 	})
