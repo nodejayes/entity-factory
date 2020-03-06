@@ -1,7 +1,7 @@
-package parsing_config
+package parsing
 
 import (
-	parsingconfig "github.com/nodejayes/entity-factory/internal/parsing/config"
+	"github.com/nodejayes/entity-factory/internal/parsing"
 	"github.com/onsi/ginkgo"
 	"github.com/onsi/gomega"
 	"io/ioutil"
@@ -30,25 +30,25 @@ func deleteConfigFile(fileName string) {
 	_ = os.Remove(filePath)
 }
 
-var _ = ginkgo.Describe("ConfigReader Tests", func() {
+var _ = ginkgo.Describe("JsonReader Tests", func() {
 	ginkgo.Context("[Method]: Read", func() {
 		ginkgo.It("can read a config.json in the Working Directory", func() {
 			createValidConfigFile("config.json")
-			configReader := parsingconfig.ConfigReader{}
-			config, err := configReader.Read()
+			configReader := parsing.JsonReader{}
+			config, err := configReader.Read(getConfigPath("config.json"))
 			gomega.Expect(err).To(gomega.BeNil())
 			gomega.Expect(config.ConnectionString).To(gomega.Equal("testconnectionstring"))
 			deleteConfigFile("config.json")
 		})
 		ginkgo.It("return a error when config.json not found", func() {
-			configReader := parsingconfig.ConfigReader{}
-			_, err := configReader.Read()
+			configReader := parsing.JsonReader{}
+			_, err := configReader.Read(getConfigPath("config.json"))
 			gomega.Expect(err.Error()).To(gomega.ContainSubstring("error on read config file "))
 		})
 		ginkgo.It("return a error when config.json is invalid", func() {
 			createInvalidConfigFile("config.json")
-			configReader := parsingconfig.ConfigReader{}
-			_, err := configReader.Read()
+			configReader := parsing.JsonReader{}
+			_, err := configReader.Read(getConfigPath("config.json"))
 			gomega.Expect(err.Error()).To(gomega.ContainSubstring("error on parse config file "))
 			deleteConfigFile("config.json")
 		})

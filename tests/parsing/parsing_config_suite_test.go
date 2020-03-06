@@ -1,4 +1,4 @@
-package parsing_config_test
+package parsing_test
 
 import (
 	"testing"
